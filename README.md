@@ -25,17 +25,15 @@ library, CERT UEFI support.   The commands to install everything are:
 
 ```
   $ python3 -m venv cert-venv
+```
 
-  $ git clone https://github.com/cmu-sei/cert-uefi-support
-  $ cd cert-uefi-support
-  $ git submodule update --init --recursive
-  $ ../cert-venv/bin/pip install .
-  $ cd ..
-  
-  $ git clone https://github.com/cmu-sei/cert-uefi-parser
-  $ cd cert-uefi-parser
-  $ ../cert-venv/bin/pip install .
-  $ cd ..
+You may activate the cert-venv if you choose.
+
+Then install the packages directly from GitHub:
+
+```
+  $ ../cert-venv/bin/pip install git+https://github.com/cmu-sei/cert-uefi-support
+  $ ../cert-venv/bin/pip install git+https://github.com/cmu-sei/cert-uefi-parser
 ```
 
 Usage
