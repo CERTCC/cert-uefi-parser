@@ -36,6 +36,7 @@ from typing import Optional
 from .base import FirmwareStructure
 from .auto import AutoObject, BruteForceFinder
 from .utils import red, blue
+from .gui_helper import ensure_gui_environment
 
 # Hacky solution for --no-color option, using a global.
 nocolor = False
@@ -78,6 +79,8 @@ def process_file(filename: str, args: argparse.Namespace) -> bool:
         elif args.sbom:
             emit(json.dumps(result.sbom(), indent=2))
         elif args.gui:
+            if not ensure_gui_environment(True):
+                return False
             try:
                 from .gui import run_gui
             except ImportError:
