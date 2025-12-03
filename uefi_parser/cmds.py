@@ -81,12 +81,7 @@ def process_file(filename: str, args: argparse.Namespace) -> bool:
         elif args.gui:
             if not ensure_gui_environment(True):
                 return False
-            try:
-                from .gui import run_gui
-            except ImportError:
-                print("GUI mode requires the optional 'qt' dependency:")
-                print("    pip install uefi_parser[qt]")
-                return False
+            from .gui import run_gui
             run_gui(result, args)
         else:
             result.report()
