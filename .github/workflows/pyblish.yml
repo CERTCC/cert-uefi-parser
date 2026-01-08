@@ -36,6 +36,7 @@ jobs:
       - name: Verify packages for syntax using mypy and flake8
         run: |
           pip install mypy flake8
+          cd "${{ github.workspace }}"
           mypy --strict
           flake8
 
