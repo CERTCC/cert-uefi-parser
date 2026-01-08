@@ -36,7 +36,7 @@ from typing import Optional
 from .base import FirmwareStructure
 from .auto import AutoObject, BruteForceFinder
 from .utils import red, blue
-from .gui import run_gui
+from .gui_helper import ensure_gui_environment
 
 # Hacky solution for --no-color option, using a global.
 nocolor = False
@@ -79,6 +79,7 @@ def process_file(filename: str, args: argparse.Namespace) -> bool:
         elif args.sbom:
             emit(json.dumps(result.sbom(), indent=2))
         elif args.gui:
+            from .gui import run_gui
             run_gui(result, args)
         else:
             result.report()
@@ -160,6 +161,11 @@ def cert_uefi_parser() -> None:
     # Unless we're generating JSON, which always has no color.
     if args.json or args.sbom:
         nocolor = True
+
+    # If we're going to open the GUI the environment needs to be correct.
+    # Do this check before parsing the file to avoid wasted effort.
+    if args.gui and not ensure_gui_environment(argparser):
+        sys.exit(3)
 
     try:
         succeeded = process_file(args.file, args)
