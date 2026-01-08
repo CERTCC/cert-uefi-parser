@@ -33,6 +33,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install build setuptools_scm
 
+      - name: Verify packages for syntax using mypy and flake8
+        run: |
+          pip install mypy flake8
+          mypy --strict
+          flake8
+
       - name: Build package
         run: python -m build --sdist --wheel --outdir dist
 

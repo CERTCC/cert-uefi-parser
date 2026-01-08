@@ -2,6 +2,7 @@
 max-line-length = 90
 accept-encodings = utf-8
 mypy_config = mypy.ini
+filename = uefi_parser/*.py
 
 per-file-ignores =
     uefi_parser/guiddb.py:E251,E501
