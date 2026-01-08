@@ -37,6 +37,8 @@ jobs:
         run: |
           pip install mypy flake8
           cd "${{ github.workspace }}"
+          pwd
+          ls
           mypy --strict
           flake8
 
