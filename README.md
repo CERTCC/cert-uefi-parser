@@ -36,7 +36,7 @@ extras:
 
 ```
   $ python3 -m venv cert-venv
-  $ ./cert-venv/bin/pip install cert-uefi-support cert-uefi-parser[qt]
+  $ ./cert-venv/bin/pip install cert-uefi-support 'cert-uefi-parser[qt]'
 ```
 
 ### Installing from the Official Git Repositories
